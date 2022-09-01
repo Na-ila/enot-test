@@ -7,7 +7,7 @@ const Header = () => {
   const openSwitch = () => {};
 
   return (
-    <div className="container">
+    <div className="header_container">
       <h1>To Do</h1>
       <IconButton onClick={openSwitch} className="settings">
         <SettingsIcon style={{ color: 'white' }} />

@@ -1,7 +1,13 @@
-import './newsLine.scss'
+import './newsLine.scss';
 
 const NewsLine = () => {
-    return <div>NewsLine</div>
-}
+  return (
+    <div className="newsline_container">
+      NewsLine NewsLine NewsLine NewsLine NewsLine NewsLine NewsLine NewsLine
+      NewsLine NewsLine NewsLine NewsLine NewsLine NewsLine NewsLine NewsLine
+      NewsLine NewsLine
+    </div>
+  );
+};
 
-export default NewsLine
+export default NewsLine;

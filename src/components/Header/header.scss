@@ -1,4 +1,6 @@
-.container {
+.header_container {
+  position: sticky;
+  top: 0;
   background: #282828;
   padding: 10px;
   display: flex;
