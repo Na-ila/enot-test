@@ -1,0 +1,25 @@
+.container {
+  background: #282828;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h1 {
+    color: #f4f4f4;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 43px;
+    margin: 0;
+  }
+
+  .settings {
+    transition: all 200ms linear;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

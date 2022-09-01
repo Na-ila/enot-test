@@ -1,7 +1,19 @@
-import './header.scss'
+import './header.scss';
+
+import IconButton from '@mui/material/IconButton';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const Header = () => {
-    return <div>header</div>
-}
+  const openSwitch = () => {};
 
-export default Header
+  return (
+    <div className="container">
+      <h1>To Do</h1>
+      <IconButton onClick={openSwitch} className="settings">
+        <SettingsIcon style={{ color: 'white' }} />
+      </IconButton>
+    </div>
+  );
+};
+
+export default Header;
