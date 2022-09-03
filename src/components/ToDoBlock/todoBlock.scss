@@ -1,0 +1,14 @@
+.todoBlock_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10vh;
+
+  .todo_item {
+    width: 300px;
+    height: 200px;
+    background: rgb(101, 153, 101);
+  }
+}
