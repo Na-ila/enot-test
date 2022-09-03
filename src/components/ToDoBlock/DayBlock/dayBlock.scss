@@ -1,12 +1,5 @@
 .card_actions {
   gap: 10px;
-
-  .color_stick {
-    height: 40px;
-    width: 5px;
-    border-radius: 3px;
-  }
-
 }
 
 .day_title {
@@ -16,8 +9,17 @@
 }
 
 .today_container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 345px;
+  width: 365px;
+
+  .today_title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.color_stick {
+  height: 40px;
+  width: 5px;
+  border-radius: 3px;
 }

@@ -1,20 +1,21 @@
 import * as React from 'react';
 import './dayBlock.scss';
 
+import { TodoListContent } from '../ToDoList/ToDoList';
+
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const style = {
   maxWidth: 345,
   width: 345,
   borderRadius: '25px',
-  p: '5px 10px'
+  p: '5px 10px',
 };
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -29,6 +30,7 @@ interface INotTodayProps {
       title: string;
       text: string;
       done: boolean;
+      color: string;
     }[];
   };
   daysDiff: number;
@@ -73,7 +75,7 @@ const NotToday = ({ data, daysDiff }: INotTodayProps) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method</Typography>
+          <TodoListContent todo={data} />
         </CardContent>
       </Collapse>
     </Card>

@@ -6,11 +6,11 @@ import NewsLine from './components/NewsLine';
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <ToDoBlock/>
-      <NewsLine/>
-    </div>
+    <>
+      <Header />
+      <ToDoBlock />
+      <NewsLine />
+    </>
   );
 }
 
