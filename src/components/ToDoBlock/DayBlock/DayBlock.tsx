@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NotToday from './NotToday';
+import Today from './Today'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -25,7 +26,7 @@ const DayBlock = ({ day }: IDayBlockProps) => {
   return (
     <ThemeProvider theme={darkTheme}>
       {daysDiff === 0 ? (
-        <div>today</div>
+        <Today/>
       ) : (
         <NotToday data={day} daysDiff={daysDiff} />
       )}

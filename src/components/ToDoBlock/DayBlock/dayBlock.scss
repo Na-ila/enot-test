@@ -7,8 +7,17 @@
     border-radius: 3px;
   }
 
-  .day_title {
-    font-weight: 500;
-    font-size: 20px;
-  }
+}
+
+.day_title {
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.today_container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 345px;
 }
