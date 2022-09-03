@@ -8,9 +8,10 @@ export interface ITodo {
 
 export interface IDay {
   date: string;
-  tasks: ITodo[];
+  todos: ITodo[];
 }
 
 export type TodoContextType = {
   dayList: IDay[];
+  updateTodo: (date: string, id: string, value: boolean) => void;
 };

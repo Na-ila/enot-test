@@ -1,6 +1,8 @@
 import React from 'react';
 import './todoItem.scss';
-import { IDay, ITodo } from '../../../@types/todo';
+import { IDay, ITodo, TodoContextType } from '../../../@types/todo';
+
+import { TodoContext } from '../../../context/todoContext';
 
 import cross from '../../../assets/cross.svg';
 import done from '../../../assets/done.svg';
@@ -81,53 +83,60 @@ const style = {
 };
 
 interface IToDoItemProps {
-  task: ITodo;
+  date: string;
+  todo: ITodo;
 }
 
 interface IToDoListProps {
-  todo: IDay;
+  day: IDay;
 }
 
-const ToDoItem = ({ task }: IToDoItemProps) => {
-  const [todoIsDone, setTodoIsDone] = React.useState(task.done);
+const ToDoItem = ({ date, todo }: IToDoItemProps) => {
+  const { dayList, updateTodo } = React.useContext(
+    TodoContext
+  ) as TodoContextType;
+
+  const isChecked = dayList
+    .filter((day) => day.date === date)[0]
+    .todos.filter((td) => td.id === todo.id)[0].done;
 
   return (
     <div className="todo_item_container">
       <div className="todo_item_left">
-        <div className="color_stick" style={{ background: task.color }}></div>
+        <div className="color_stick" style={{ background: todo.color }}></div>
         <div>
           <p
             className="todo_title"
-            style={{ textDecoration: todoIsDone ? 'line-through' : 'none' }}
+            style={{ textDecoration: isChecked ? 'line-through' : 'none' }}
           >
-            {task.title}
+            {todo.title}
           </p>
-          <p className="todo_text">{task.text}</p>
+          <p className="todo_text">{todo.text}</p>
         </div>
       </div>
       <IOSSwitch
         sx={{ m: 1 }}
-        value={todoIsDone}
-        onChange={(e) => setTodoIsDone(e.target.checked)}
+        checked={isChecked}
+        onChange={(e) => updateTodo(date, todo.id, e.target.checked)}
       />
     </div>
   );
 };
 
-export const TodoListContent = ({ todo }: IToDoListProps) => {
+export const TodoListContent = ({ day }: IToDoListProps) => {
   return (
     <div className="todo_list_container">
-      {todo.tasks.map((task) => (
-        <ToDoItem task={task} key={task.id} />
+      {day.todos.map((todo) => (
+        <ToDoItem todo={todo} key={todo.id} date={day.date} />
       ))}
     </div>
   );
 };
 
-const ToDoList = ({ todo }: IToDoListProps) => {
+const ToDoList = ({ day }: IToDoListProps) => {
   return (
     <Paper style={style}>
-      <TodoListContent todo={todo} />
+      <TodoListContent day={day} />
     </Paper>
   );
 };

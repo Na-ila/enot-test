@@ -17,9 +17,9 @@ const DayBlock = ({ day }: IDayBlockProps) => {
   return (
     <ThemeProvider theme={darkTheme}>
       {daysDiff === 0 ? (
-        <Today data={day} />
+        <Today day={day} />
       ) : (
-        <NotToday data={day} daysDiff={daysDiff} />
+        <NotToday day={day} daysDiff={daysDiff} />
       )}
     </ThemeProvider>
   );

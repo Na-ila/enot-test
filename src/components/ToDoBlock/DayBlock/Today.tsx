@@ -7,17 +7,17 @@ import Checkbox from '@mui/material/Checkbox';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 interface ITodayProps {
-  data: IDay;
+  day: IDay;
 }
 
-const Today = ({ data }: ITodayProps) => {
+const Today = ({ day }: ITodayProps) => {
   return (
     <div className="today_container">
       <div className="today_title">
         <Checkbox {...label} defaultChecked style={{ color: 'white' }} />
         <div className="day_title">Today tasks:</div>
       </div>
-      <ToDoList todo={data} />
+      <ToDoList day={day} />
     </div>
   );
 };

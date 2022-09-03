@@ -24,7 +24,7 @@ interface ExpandMoreProps extends IconButtonProps {
 }
 
 interface INotTodayProps {
-  data: IDay;
+  day: IDay;
   daysDiff: number;
 }
 
@@ -40,12 +40,12 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-const NotToday = ({ data, daysDiff }: INotTodayProps) => {
+const NotToday = ({ day, daysDiff }: INotTodayProps) => {
   const [expanded, setExpanded] = React.useState(false);
   const title =
     daysDiff === 1
       ? 'Tomorrow'
-      : data.date.slice(8) + '/' + data.date.slice(5, 7);
+      : day.date.slice(8) + '/' + day.date.slice(5, 7);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -67,7 +67,7 @@ const NotToday = ({ data, daysDiff }: INotTodayProps) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <TodoListContent todo={data} />
+          <TodoListContent day={day} />
         </CardContent>
       </Collapse>
     </Card>

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { TodoContextType, IDay } from '../@types/todo';
+import { TodoContextType, IDay, ITodo } from '../@types/todo';
 
 export const TodoContext = React.createContext<TodoContextType | null>(null);
 
@@ -11,7 +11,7 @@ const TodoProvider = ({ children }: Props) => {
   const [dayList, setDayList] = React.useState<IDay[]>([
     {
       date: '2022-09-03',
-      tasks: [
+      todos: [
         {
           id: '1',
           title: 'todo 1',
@@ -30,7 +30,7 @@ const TodoProvider = ({ children }: Props) => {
     },
     {
       date: '2022-09-04',
-      tasks: [
+      todos: [
         {
           id: '1',
           title: 'todo 1',
@@ -70,7 +70,7 @@ const TodoProvider = ({ children }: Props) => {
     },
     {
       date: '2022-09-05',
-      tasks: [
+      todos: [
         {
           id: '1',
           title: 'todo 1',
@@ -102,8 +102,38 @@ const TodoProvider = ({ children }: Props) => {
       ],
     },
   ]);
+  const updateTodo = (date: string, id: string, value: boolean) => {
+    dayList.forEach((day: IDay, dayIndex: number) => {
+      if (day.date === date) {
+        day.todos.forEach((todo: ITodo, todoIndex: number) => {
+          if (todo.id === id) {
+            const updatedTodo = {
+              ...todo,
+              done: value,
+            };
+            const updatedDay = {
+              ...day,
+              todos: [
+                ...day.todos.slice(0, todoIndex),
+                updatedTodo,
+                ...day.todos.slice(todoIndex + 1),
+              ],
+            };
+
+            setDayList((prev) => [
+              ...prev.slice(0, dayIndex),
+              updatedDay,
+              ...prev.slice(dayIndex + 1),
+            ]);
+          }
+        });
+      }
+    });
+  };
   return (
-    <TodoContext.Provider value={{ dayList }}>{children}</TodoContext.Provider>
+    <TodoContext.Provider value={{ dayList, updateTodo }}>
+      {children}
+    </TodoContext.Provider>
   );
 };
 
