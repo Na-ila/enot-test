@@ -1,4 +1,5 @@
 import './dayBlock.scss';
+import { IDay } from '../../../@types/todo';
 
 import ToDoList from '../ToDoList';
 
@@ -6,16 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 interface ITodayProps {
-  data: {
-    date: string;
-    tasks: {
-      id: string;
-      title: string;
-      text: string;
-      done: boolean;
-      color: string;
-    }[];
-  };
+  data: IDay;
 }
 
 const Today = ({ data }: ITodayProps) => {

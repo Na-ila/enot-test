@@ -1,21 +1,11 @@
-import React from 'react';
-
+import { IDay } from '../../../@types/todo';
 import NotToday from './NotToday';
 import Today from './Today';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 interface IDayBlockProps {
-  day: {
-    date: string;
-    tasks: {
-      id: string;
-      title: string;
-      text: string;
-      done: boolean;
-      color: string;
-    }[];
-  };
+  day: IDay;
 }
 
 const darkTheme = createTheme({ palette: { mode: 'dark' } });

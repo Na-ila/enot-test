@@ -1,5 +1,6 @@
 import React from 'react';
 import './todoItem.scss';
+import { IDay, ITodo } from '../../../@types/todo';
 
 import cross from '../../../assets/cross.svg';
 import done from '../../../assets/done.svg';
@@ -80,26 +81,11 @@ const style = {
 };
 
 interface IToDoItemProps {
-  task: {
-    id: string;
-    title: string;
-    text: string;
-    done: boolean;
-    color: string;
-  };
+  task: ITodo;
 }
 
 interface IToDoListProps {
-  todo: {
-    date: string;
-    tasks: {
-      id: string;
-      title: string;
-      text: string;
-      done: boolean;
-      color: string;
-    }[];
-  };
+  todo: IDay;
 }
 
 const ToDoItem = ({ task }: IToDoItemProps) => {

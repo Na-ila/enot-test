@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './dayBlock.scss';
+import { IDay } from '../../../@types/todo';
 
 import { TodoListContent } from '../ToDoList/ToDoList';
 
@@ -23,16 +24,7 @@ interface ExpandMoreProps extends IconButtonProps {
 }
 
 interface INotTodayProps {
-  data: {
-    date: string;
-    tasks: {
-      id: string;
-      title: string;
-      text: string;
-      done: boolean;
-      color: string;
-    }[];
-  };
+  data: IDay;
   daysDiff: number;
 }
 
