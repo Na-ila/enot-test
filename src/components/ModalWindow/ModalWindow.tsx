@@ -10,20 +10,6 @@ import CreateTodo from './CreateTodo';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#282828',
-  color: '#f4f4f4',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: '25px',
-};
-
 const ModalWindow = () => {
   const { modalWindow, updateModalInfo } = React.useContext(
     TodoContext
@@ -46,7 +32,7 @@ const ModalWindow = () => {
       aria-describedby="modal-modal-description"
       disableAutoFocus
     >
-      <Box sx={style}>
+      <Box className="modal_container">
         {modalWindow.type === 'delete' ? (
           <Delete />
         ) : modalWindow.type === 'create' ? (

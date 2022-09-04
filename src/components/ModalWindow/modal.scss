@@ -1,3 +1,32 @@
+$small: 500px;
+
+.modal_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+  background: #282828;
+  color: #f4f4f4;
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 14px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .text_field {
+    @media screen and (max-width: $small) {
+      width: 80vw;
+    }
+  }
+
+  @media screen and (max-width: $small) {
+    width: 90vw;
+  }
+}
+
 .modal_delete_btn_group {
   display: flex;
   justify-content: space-between;

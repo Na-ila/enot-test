@@ -89,6 +89,7 @@ const CreateTodo = () => {
         sx={{
           ...textAreaStyle,
         }}
+        className="text_field"
       />
       <LocalizationProvider
         dateAdapter={AdapterDateFns}
@@ -110,6 +111,7 @@ const CreateTodo = () => {
                 svg: { color: 'white' },
               }}
               {...params}
+              className="text_field"
             />
           )}
         />
@@ -131,6 +133,7 @@ const CreateTodo = () => {
         }}
         multiline
         minRows={3}
+        className="text_field"
       />
       <Button variant="contained" onClick={createTask}>
         Create
