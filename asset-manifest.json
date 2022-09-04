@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/enot-test/static/css/main.60f0b26b.css",
-    "main.js": "/enot-test/static/js/main.0d4c29fe.js",
+    "main.css": "/enot-test/static/css/main.8dad202e.css",
+    "main.js": "/enot-test/static/js/main.c7ff9e78.js",
     "index.html": "/enot-test/index.html",
     "static/media/cross.svg": "/enot-test/static/media/cross.5d4f465d45db38edf8eb24fcc9606dc1.svg",
     "static/media/done.svg": "/enot-test/static/media/done.e3c6639b75663eda952ad0a63f24cb4a.svg",
-    "main.60f0b26b.css.map": "/enot-test/static/css/main.60f0b26b.css.map",
-    "main.0d4c29fe.js.map": "/enot-test/static/js/main.0d4c29fe.js.map"
+    "main.8dad202e.css.map": "/enot-test/static/css/main.8dad202e.css.map",
+    "main.c7ff9e78.js.map": "/enot-test/static/js/main.c7ff9e78.js.map"
   },
   "entrypoints": [
-    "static/css/main.60f0b26b.css",
-    "static/js/main.0d4c29fe.js"
+    "static/css/main.8dad202e.css",
+    "static/js/main.c7ff9e78.js"
   ]
 }
