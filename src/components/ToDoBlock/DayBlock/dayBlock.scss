@@ -19,7 +19,8 @@
 }
 
 .color_stick {
-  height: 40px;
-  width: 5px;
+  height: 100%;
+  min-height: 40px;
+  min-width: 5px;
   border-radius: 3px;
 }
