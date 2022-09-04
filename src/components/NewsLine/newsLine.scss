@@ -18,7 +18,7 @@
     font-size: 20px;
     opacity: var(--newsOpacity);
     transition: all 200ms linear;
-    animation: newsAnim linear 20s infinite;
+    animation: newsAnim linear 40s infinite;
     animation-play-state: var(--animPlayState);
   }
 }
