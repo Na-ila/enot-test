@@ -19,6 +19,8 @@ interface INews {
 
 const NewsLine = () => {
   const { showNews } = React.useContext(TodoContext) as TodoContextType;
+  const newsContainerRef =
+    React.useRef() as React.MutableRefObject<HTMLDivElement>;
   const newsRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
 
   const { isLoading, error, data } = useQuery('newsData', () =>
@@ -40,7 +42,10 @@ const NewsLine = () => {
         '--animPlayState',
         showNews ? 'playing' : 'paused'
       );
-      newsRef.current.style.setProperty('--newsOpacity', showNews ? '1' : '0');
+      newsContainerRef.current.style.setProperty(
+        '--newsOpacity',
+        showNews ? '1' : '0'
+      );
     }
   }, [showNews, error, data]);
 
@@ -49,7 +54,7 @@ const NewsLine = () => {
       <Skeleton variant="text" sx={{ fontSize: '20px', height: '100%' }} />
     </div>
   ) : (
-    <div className="newsline_container">
+    <div className="newsline_container" ref={newsContainerRef}>
       <div className="newsline_content" ref={newsRef}>
         {error ? newsDefaultText : data}
       </div>
