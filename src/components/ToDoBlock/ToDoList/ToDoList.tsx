@@ -1,8 +1,8 @@
 import React from 'react';
 import './todoItem.scss';
-import { IDay, ITodo, TodoContextType } from '../../../@types/todo';
 
 import { TodoContext } from '../../../context/todoContext';
+import { IDay, ITodo, TodoContextType } from '../../../@types/todo';
 
 import cross from '../../../assets/cross.svg';
 import done from '../../../assets/done.svg';
@@ -10,6 +10,8 @@ import done from '../../../assets/done.svg';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import Switch, { SwitchProps } from '@mui/material/Switch';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -92,13 +94,22 @@ interface IToDoListProps {
 }
 
 const ToDoItem = ({ date, todo }: IToDoItemProps) => {
-  const { dayList, updateTodo } = React.useContext(
+  const { dayList, updateTodo, updateModalInfo } = React.useContext(
     TodoContext
   ) as TodoContextType;
 
   const isChecked = dayList
     .filter((day) => day.date === date)[0]
     .todos.filter((td) => td.id === todo.id)[0].done;
+
+  const deleteTodo = () => {
+    updateModalInfo({
+      open: true,
+      type: 'delete',
+      date: date,
+      id: todo.id,
+    });
+  };
 
   return (
     <div className="todo_item_container">
@@ -114,11 +125,16 @@ const ToDoItem = ({ date, todo }: IToDoItemProps) => {
           <p className="todo_text">{todo.text}</p>
         </div>
       </div>
-      <IOSSwitch
-        sx={{ m: 1 }}
-        checked={isChecked}
-        onChange={(e) => updateTodo(date, todo.id, e.target.checked)}
-      />
+      <div>
+        <IOSSwitch
+          sx={{ m: 1 }}
+          checked={isChecked}
+          onChange={(e) => updateTodo(date, todo.id, e.target.checked)}
+        />
+        <IconButton style={{ padding: 0 }} onClick={deleteTodo}>
+          <CloseIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };

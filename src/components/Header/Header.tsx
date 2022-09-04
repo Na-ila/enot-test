@@ -6,25 +6,43 @@ import { TodoContextType } from '../../@types/todo';
 
 import Switch from '@mui/material/Switch';
 import Tooltip from '@mui/material/Tooltip';
+import AddIcon from '@mui/icons-material/Add';
+import IconButton from '@mui/material/IconButton';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const Header = () => {
-  const { showNews, updateShowNews } = React.useContext(
+  const { showNews, updateShowNews, updateModalInfo } = React.useContext(
     TodoContext
   ) as TodoContextType;
+
+  const createTodo = () => {
+    updateModalInfo({
+      open: true,
+      type: 'create',
+      date: '',
+      id: '',
+    });
+  };
 
   return (
     <div className="header_container">
       <h1>To Do</h1>
-      <Tooltip title={showNews ? 'Скрыть новости' : 'Показать новости'}>
-        <Switch
-          {...label}
-          defaultChecked
-          onChange={updateShowNews}
-          value={showNews}
-        />
-      </Tooltip>
+      <div>
+        <Tooltip title={showNews ? 'Hide news' : 'Show news'}>
+          <Switch
+            {...label}
+            onChange={updateShowNews}
+            value={showNews}
+            checked={showNews}
+          />
+        </Tooltip>
+        <Tooltip title={'Add todo'}>
+          <IconButton onClick={createTodo}>
+            <AddIcon style={{ color: 'white' }} />
+          </IconButton>
+        </Tooltip>
+      </div>
     </div>
   );
 };
