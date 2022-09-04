@@ -130,8 +130,14 @@ const TodoProvider = ({ children }: Props) => {
       }
     });
   };
+  const [showNews, setShowNews] = React.useState(true);
+  const updateShowNews = () => {
+    setShowNews((prev) => !prev);
+  };
   return (
-    <TodoContext.Provider value={{ dayList, updateTodo }}>
+    <TodoContext.Provider
+      value={{ dayList, updateTodo, showNews, updateShowNews }}
+    >
       {children}
     </TodoContext.Provider>
   );

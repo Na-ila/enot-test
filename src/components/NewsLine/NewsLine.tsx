@@ -2,6 +2,9 @@ import React from 'react';
 import './newsLine.scss';
 import { useQuery } from 'react-query';
 
+import { TodoContext } from '../../context/todoContext';
+import { TodoContextType } from '../../@types/todo';
+
 import { newsDefaultText } from '../../App/utils';
 
 import Skeleton from '@mui/material/Skeleton';
@@ -15,6 +18,9 @@ interface INews {
 }
 
 const NewsLine = () => {
+  const { showNews } = React.useContext(TodoContext) as TodoContextType;
+  const newsRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
+
   const { isLoading, error, data } = useQuery('newsData', () =>
     fetch('https://jsonplaceholder.typicode.com/comments')
       .then((res) => {
@@ -28,13 +34,25 @@ const NewsLine = () => {
       )
   );
 
+  React.useEffect(() => {
+    if (newsRef.current) {
+      newsRef.current.style.setProperty(
+        '--animPlayState',
+        showNews ? 'playing' : 'paused'
+      );
+      newsRef.current.style.setProperty('--newsOpacity', showNews ? '1' : '0');
+    }
+  }, [showNews, error, data]);
+
   return isLoading ? (
     <div className="skeleton">
       <Skeleton variant="text" sx={{ fontSize: '20px', height: '100%' }} />
     </div>
   ) : (
     <div className="newsline_container">
-      <div className="newsline_content">{error ? newsDefaultText : data}</div>
+      <div className="newsline_content" ref={newsRef}>
+        {error ? newsDefaultText : data}
+      </div>
     </div>
   );
 };

@@ -14,4 +14,6 @@ export interface IDay {
 export type TodoContextType = {
   dayList: IDay[];
   updateTodo: (date: string, id: string, value: boolean) => void;
+  showNews: boolean;
+  updateShowNews: () => void;
 };

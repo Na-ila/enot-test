@@ -1,17 +1,30 @@
+import React from 'react';
 import './header.scss';
 
-import IconButton from '@mui/material/IconButton';
-import SettingsIcon from '@mui/icons-material/Settings';
+import { TodoContext } from '../../context/todoContext';
+import { TodoContextType } from '../../@types/todo';
+
+import Switch from '@mui/material/Switch';
+import Tooltip from '@mui/material/Tooltip';
+
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const Header = () => {
-  const openSwitch = () => {};
+  const { showNews, updateShowNews } = React.useContext(
+    TodoContext
+  ) as TodoContextType;
 
   return (
     <div className="header_container">
       <h1>To Do</h1>
-      <IconButton onClick={openSwitch} className="settings">
-        <SettingsIcon style={{ color: 'white' }} />
-      </IconButton>
+      <Tooltip title={showNews ? 'Скрыть новости' : 'Показать новости'}>
+        <Switch
+          {...label}
+          defaultChecked
+          onChange={updateShowNews}
+          value={showNews}
+        />
+      </Tooltip>
     </div>
   );
 };
