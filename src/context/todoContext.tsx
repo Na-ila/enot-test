@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { TodoContextType, IDay, ITodo } from '../@types/todo';
+import { dates } from '../App/utils';
 
 export const TodoContext = React.createContext<TodoContextType | null>(null);
 
@@ -10,7 +11,7 @@ interface Props {
 const TodoProvider = ({ children }: Props) => {
   const [dayList, setDayList] = React.useState<IDay[]>([
     {
-      date: '2022-09-03',
+      date: dates()[0],
       todos: [
         {
           id: '1',
@@ -29,7 +30,7 @@ const TodoProvider = ({ children }: Props) => {
       ],
     },
     {
-      date: '2022-09-04',
+      date: dates()[1],
       todos: [
         {
           id: '1',
@@ -69,7 +70,7 @@ const TodoProvider = ({ children }: Props) => {
       ],
     },
     {
-      date: '2022-09-05',
+      date: dates()[2],
       todos: [
         {
           id: '1',
